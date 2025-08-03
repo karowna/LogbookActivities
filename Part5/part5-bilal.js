@@ -33,31 +33,20 @@ class TaskManager {
   }
 
   // Method to mark a task as completed
+  // Bilal Karowna (comment to prove its me!!)
   // This block of code sets the completed property of the task to true, which indicates that the task has been finished
   completeTask(id) {
-    let foundTask = null;
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].id === id) {
-        foundTask = this.tasks[i];
-        break;
-      }
-    }
-    if (foundTask) {
-      foundTask.completed = true;
-    }
+  const task = this.tasks.find(task => task.id === id);
+  if (task) {
+    task.completed = true;
   }
+}
 
   // Method to delete a task by ID
   // It deletes the task with the given ID from the tasks array
-  deleteTask(id) {
-    let newTasks = [];
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].id !== id) {
-        newTasks.push(this.tasks[i]);
-      }
-    }
-    this.tasks = newTasks;
-  }
+ deleteTask(id) {
+  this.tasks = this.tasks.filter(task => task.id !== id);
+}
 
   // Method to filter tasks by completion status and log each filtered task
   filterTasks(completed) {
